@@ -5,6 +5,7 @@ import App from './App.vue'
 
 // import styles
 import 'vuetify/dist/vuetify.min.css'
+import './sass/stylesheets.sass'
 
 // import plugins and util
 import vuetify from './plugins/vuetify'
