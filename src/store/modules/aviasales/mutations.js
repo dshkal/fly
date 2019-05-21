@@ -9,5 +9,11 @@ export default {
   },
   [constants.SET_AIRLINES] (state, airlines) {
     state.airlines = airlines
+  },
+  [constants.SET_FLIGHTS] (state, flights) {
+    state.flights = flights
+  },
+  [constants.SET_SEARCH] (state, search) {
+    state.search = search
   }
 }

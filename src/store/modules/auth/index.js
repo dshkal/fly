@@ -3,11 +3,8 @@ import mutations from './mutations'
 import getters from './getters'
 
 const initialState = {
-  countries: [],
-  cities: [],
-  airlines: [],
-  flights: {},
-  search: {}
+  user: null,
+  token: null
 }
 
 export default {

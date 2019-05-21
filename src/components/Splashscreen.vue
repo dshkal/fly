@@ -35,11 +35,11 @@ export default {
       let rightPart = document.querySelector('#right-part')
       let tl = new TimelineLite({paused: false})
       tl
-        .set(leftPart, { css: { backgroundColor: 'rgb(248, 36, 0)' } }, 'bg')
-        .set(rightPart, { css: { backgroundColor: 'rgb(248, 36, 0)' } }, 'bg')
+        .set(leftPart, { css: { backgroundColor: '#1976D2' } }, 'bg')
+        .set(rightPart, { css: { backgroundColor: '#1976D2' } }, 'bg')
         .to(leftPart, 1, { left: 0, width: '100%' }, 'bg')
         .to(rightPart, 1, { right: 0, width: '100%' }, 'bg')
-        .set(splash, { css: { backgroundColor: 'rgb(248, 36, 0)' } })
+        .set(splash, { css: { backgroundColor: '#1976D2' } })
         .to(splash, .25, { css: { opacity: 0, display: 'none' } })
     },
     init () {

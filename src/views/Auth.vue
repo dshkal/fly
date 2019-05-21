@@ -4,23 +4,24 @@
       align-center
       justify-center
     >
-     <v-flex xs12 md10>
-       <fly-card></fly-card>
-     </v-flex>
+      <v-flex xs12 md4>
+        <auth-card></auth-card>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import FlyCard from '../components/home/FlyCard.vue'
+import AuthCard from '../components/auth/AuthCard.vue'
 
 export default {
-  name: 'home',
+  name: 'auth',
   components: {
-    'fly-card': FlyCard
+    'auth-card': AuthCard
   }
 }
 </script>
 
 <style scoped>
+
 </style>

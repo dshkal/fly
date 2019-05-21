@@ -20,3 +20,23 @@
 	right: calc(50% - 224px + 45px)
 .navbar
 	padding: 10px 35px
+.theme--dark.application, .theme--light.application
+	background-color: #1976D2
+	color: white
+.fade-enter-active, .fade-leave-active
+	transition: opacity .5s ease
+.fade-enter, .fade-leave-active
+	opacity: 0
+.child-view
+	position: absolute
+	transition: all .5s cubic-bezier(.55,0,.1,1)
+.slide-left-enter, .slide-right-leave-active
+	opacity: 0
+	-webkit-transform: translate(30px, 0)
+	transform: translate(30px, 0)
+.slide-left-leave-active, .slide-right-enter
+	opacity: 0
+	-webkit-transform: translate(-30px, 0)
+	transform: translate(-30px, 0)
+.theme--dark.v-list-item .v-list-item__subtitle, .theme--dark.v-list-item
+	color: black

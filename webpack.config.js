@@ -74,6 +74,12 @@ module.exports = {
   devtool: '#eval-source-map',
   plugins: [
     new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Fly booking',
+      template: 'index.html',
+      filename: path.resolve(__dirname, './dist/index.html'),
+      favicon: path.resolve(__dirname, './public/favicon.ico')
+    })
   ]
 }
 
@@ -89,12 +95,6 @@ if (isProd) {
       'process.env': {
         NODE_ENV: '"production"'
       }
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Fly booking',
-      template: 'index.html',
-      filename: path.resolve(__dirname, './dist/index.html'),
-      favicon: path.resolve(__dirname, './public/favicon.ico')
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
@@ -112,12 +112,6 @@ if (isProd) {
         TOKEN: `"${process.env.API_TOKEN}"`,
         MARKER: `"${process.env.API_MARKER}"`
       }
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Slick Cactus',
-      template: 'index.html',
-      filename: path.resolve(__dirname, './dist/index.html'),
-      favicon: path.resolve(__dirname, './public/favicon.ico')
     })
   ])
 }

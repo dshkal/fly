@@ -7,6 +7,7 @@ import getters from './getters'
 
 // modules
 import Aviasales from './modules/aviasales'
+import Auth from './modules/auth'
 
 Vue.use(Vuex)
 
@@ -19,8 +20,9 @@ export default new Vuex.Store({
   actions,
   mutations,
   getters,
-  plugins: [createPersistedState()],
+  plugins: [createPersistedState({ key: 'fly' })],
   modules: {
-    Aviasales
+    Aviasales,
+    Auth
   }
 })
