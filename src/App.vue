@@ -12,8 +12,11 @@
       </v-btn>
       <v-spacer></v-spacer>
       <template v-if="token">
-        <v-btn icon @click="exit">
-          <v-icon>exit_to_app</v-icon>
+<!--        <v-btn icon @click="exit">-->
+<!--          <v-icon>exit_to_app</v-icon>-->
+<!--        </v-btn>-->
+        <v-btn icon @click="drawer = true">
+          <v-icon>apps</v-icon>
         </v-btn>
       </template>
       <template v-else>
@@ -37,7 +40,7 @@
       color="white"
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item link to="/user-flight">
           <v-list-item-icon>
             <v-icon>flight</v-icon>
           </v-list-item-icon>
@@ -55,6 +58,13 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+    <v-snackbar
+      v-model="error.show"
+      color="red"
+      :timeout="4000"
+    >
+      {{ error.message }}
+    </v-snackbar>
   </v-app>
 </template>
 
@@ -62,6 +72,7 @@
 import Splash from './components/Splashscreen.vue'
 import { TOGGLE_SPLASH } from './store/action-types'
 import { LOGOUT } from './store/modules/auth/action-types'
+import { SET_ERROR } from './store/action-types'
 import { GET_COUNTRIES_LIST, GET_AIRLINES_LIST, GET_CITIES_LIST } from './store/modules/aviasales/action-types'
 import { mapMutations, mapActions } from 'vuex'
 
@@ -84,6 +95,14 @@ export default {
     },
     token () {
       return this.$store.state.Auth.token
+    },
+    error: {
+      get () {
+        return this.$store.state.error
+      },
+      set (value) {
+        this.setError(value)
+      }
     }
   },
   methods: {
@@ -112,6 +131,9 @@ export default {
     }),
     ...mapMutations('Auth', {
       logout: LOGOUT
+    }),
+    ...mapMutations({
+      setError: SET_ERROR
     })
   },
   beforeRouteUpdate (to, from, next) {

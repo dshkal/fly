@@ -12,7 +12,11 @@ import Auth from './modules/auth'
 Vue.use(Vuex)
 
 const initialState = {
-  splash: false
+  splash: false,
+  error: {
+    show: false,
+    message: ''
+  }
 }
 
 export default new Vuex.Store({

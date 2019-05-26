@@ -86,5 +86,13 @@ export default {
     } catch (e) {
       console.error(e.message)
     }
+  },
+  async [constants.GET_USER_FLIGHTS] ({commit}, id) {
+    try {
+      let response = await API.getUserFlights(id)
+      return response.data.map(item => item.flight)
+    } catch (e) {
+      console.error(e.message)
+    }
   }
 }

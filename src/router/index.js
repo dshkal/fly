@@ -10,6 +10,7 @@ const Flight = () => import(/* webpackChunkName: "Flight" */ '../views/Flight.vu
 const Auth = () => import(/* webpackChunkName: "Auth" */ '../views/Auth.vue')
 const Order = () => import(/* webpackChunkName: "Auth" */ '../views/Order.vue')
 const Success = () => import(/* webpackChunkName: "Auth" */ '../views/Success.vue')
+const UserFlight = () => import(/* webpackChunkName: "Auth" */ '../views/UserFlight.vue')
 
 // настраиваем пути(роуты) приложения
 const routes = [
@@ -32,6 +33,18 @@ const routes = [
     path: '/order/:id',
     name: 'order',
     component: Order,
+    beforeEnter (to, from, next) {
+      if (store.state.Auth.token) {
+        next()
+      } else {
+        next('/auth')
+      }
+    }
+  },
+  {
+    path: '/user-flight',
+    name: 'user-flight',
+    component: UserFlight,
     beforeEnter (to, from, next) {
       if (store.state.Auth.token) {
         next()

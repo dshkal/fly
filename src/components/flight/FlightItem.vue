@@ -23,7 +23,7 @@
           ${{flight.price}}
         </v-list-item-title>
       </v-list-item-action>
-      <v-list-item-action>
+      <v-list-item-action v-if="order">
         <v-btn icon color="primary" large :to="`/order/${flight.id}`">
           <v-icon medium>monetization_on</v-icon>
         </v-btn>
@@ -39,6 +39,10 @@ export default {
     flight: {
       type: Object,
       required: true
+    },
+    order: {
+      type: Boolean,
+      default: () => true
     }
   },
   computed: {

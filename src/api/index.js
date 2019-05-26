@@ -105,6 +105,21 @@ class Api {
         })
     })
   }
+  static getUserFlights (id) {
+    return new Promise((resolve, reject) => {
+      api.post('/get-user-flights', {'user_id': id}, {
+        headers: {
+          authorization: store.state.Auth.token
+        }
+      })
+        .then(response => {
+          resolve(response)
+        })
+        .catch(err => {
+          reject(new Error(err))
+        })
+    })
+  }
 }
 
 export default Api

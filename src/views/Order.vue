@@ -64,6 +64,7 @@ export default {
       let { name, surname, gender } = this.user
       console.log(surname)
       this.orderAction({
+        user_id: this.$store.state.Auth.user._id,
         name,
         surname,
         gender,
