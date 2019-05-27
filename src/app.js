@@ -5,6 +5,7 @@ import App from './App.vue'
 
 // import styles
 import 'vuetify/dist/vuetify.min.css'
+import './sass/stylesheets.sass'
 
 // import plugins and util
 import vuetify from './plugins/vuetify'
@@ -15,6 +16,7 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
+// создаем объект приложение
 new Vue({
   el: '#app',
   vuetify,

@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin  = require('mini-css-extract-plugin')
 require('@babel/polyfill')
+require('dotenv').config()
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -65,11 +66,20 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     noInfo: false,
-    clientLogLevel: 'error'
+    clientLogLevel: 'error',
+    headers: {
+      "Access-Control-Allow-Origin": "http://api.travelpayouts.com"
+    }
   },
   devtool: '#eval-source-map',
   plugins: [
     new VueLoaderPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Fly booking',
+      template: 'index.html',
+      filename: path.resolve(__dirname, './dist/index.html'),
+      favicon: path.resolve(__dirname, './public/favicon.ico')
+    })
   ]
 }
 
@@ -86,12 +96,6 @@ if (isProd) {
         NODE_ENV: '"production"'
       }
     }),
-    new HtmlWebpackPlugin({
-      title: 'Fly booking',
-      template: 'index.html',
-      filename: path.resolve(__dirname, './dist/index.html'),
-      favicon: path.resolve(__dirname, './public/favicon.ico')
-    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
@@ -102,14 +106,12 @@ if (isProd) {
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"development"'
+        NODE_ENV: '"development"',
+        AVIASALES: `"${process.env.AVIASALES_API_ENDPOINT}"`,
+        API: `"${process.env.API_ENDPOINT}"`,
+        TOKEN: `"${process.env.API_TOKEN}"`,
+        MARKER: `"${process.env.API_MARKER}"`
       }
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Slick Cactus',
-      template: 'index.html',
-      filename: path.resolve(__dirname, './dist/index.html'),
-      favicon: path.resolve(__dirname, './public/favicon.ico')
     })
   ])
 }
